@@ -1,0 +1,7 @@
+{
+  "customer_id": "cust_001",
+  "subject": "Invoice refund request",
+  "message": "I need help with a refund for my latest invoice.",
+  "channel": "email",
+  "priority": "normal"
+}
