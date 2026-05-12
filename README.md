@@ -8,11 +8,12 @@ Production-ready AI-style customer support orchestration platform with specializ
 - Specialized support agents for billing, technical, account, and general queries
 - Priority and escalation scoring
 - FastAPI support API
-- CLI demo and ticket processing workflows
-- JSON ticket examples
+- CLI demo workflow
+- JSON ticket example
 - Docker and Docker Compose deployment
 - GitHub Actions CI
 - Pytest test suite
+- Architecture and deployment documentation
 
 ## Quickstart
 
@@ -32,8 +33,21 @@ curl -X POST http://localhost:8000/tickets/route \
   -d @sample_ticket.json
 ```
 
+## Docker
+
+```bash
+docker-compose up --build
+```
+
+## Docs
+
+- `ARCHITECTURE.md`
+- `DEPLOYMENT.md`
+- `sample_ticket.json`
+
 ## Portfolio Highlights
 
 - Demonstrates agent orchestration and production API design
 - Shows routing, escalation, and modular AI workflow patterns
 - Deployable, testable, and recruiter-friendly
+- Strong foundation for LangGraph, CRM integration, vector memory, and human escalation workflows
