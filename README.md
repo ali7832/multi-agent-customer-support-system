@@ -1,19 +1,23 @@
 # Multi-Agent Customer Support System
 
-Production-ready AI-style customer support orchestration platform with specialized agents, ticket routing, escalation logic, FastAPI APIs, CLI workflows, tests, Docker, and CI.
+Deployable customer support routing application with specialized agents, ticket lifecycle metadata, SLA assignment, escalation decisions, audit events, FastAPI APIs, CLI workflows, Docker, CI, and tests.
 
-## Features
+## Core Capabilities
 
 - Multi-agent ticket routing
-- Specialized support agents for billing, technical, account, and general queries
-- Priority and escalation scoring
-- FastAPI support API
+- Specialized agents for billing, technical, account, and general support
+- Ticket IDs and audit IDs for traceability
+- SLA assignment by priority, account tier, and escalation state
+- Escalation logic for urgent tickets
+- Routing confidence and routing strategy version metadata
+- JSONL ticket event stream for local audit and demo mode
+- FastAPI `/tickets/route` API
 - CLI demo workflow
-- JSON ticket example
+- Runtime configuration through environment variables
 - Docker and Docker Compose deployment
 - GitHub Actions CI
-- Pytest test suite
-- Architecture and deployment documentation
+- Pytest coverage
+- Operations runbook and architecture decision record
 
 ## Quickstart
 
@@ -39,15 +43,23 @@ curl -X POST http://localhost:8000/tickets/route \
 docker-compose up --build
 ```
 
-## Docs
+## Runtime Configuration
+
+See `.env.example` for environment, routing version, escalation priorities, ticket event path, and SLA settings.
+
+## Documentation
 
 - `ARCHITECTURE.md`
 - `DEPLOYMENT.md`
+- `OPERATIONS.md`
+- `docs/adr-001-support-routing-service.md`
 - `sample_ticket.json`
 
-## Portfolio Highlights
+## Production Roadmap
 
-- Demonstrates agent orchestration and production API design
-- Shows routing, escalation, and modular AI workflow patterns
-- Deployable, testable, and recruiter-friendly
-- Strong foundation for LangGraph, CRM integration, vector memory, and human escalation workflows
+- Helpdesk integrations
+- LLM-based intent classification
+- Human escalation queue
+- Customer history retrieval
+- SLA dashboard and routing analytics
+- Multi-tenant configuration
