@@ -1,26 +1,24 @@
 from fastapi import FastAPI
 
-from support_system.router import classify, get_agent, should_escalate
-from support_system.schemas import RoutedTicket, Ticket
+from support_system.config import settings
+from support_system.schemas import HealthResponse, RoutedTicket, Ticket
+from support_system.service import SupportRoutingService
 
-app = FastAPI(title='Multi-Agent Customer Support API')
+app = FastAPI(title='Multi-Agent Customer Support API', version='0.2.0')
+
+_service = SupportRoutingService()
 
 
-@app.get('/health')
-def health() -> dict:
-    return {'status': 'ok'}
+@app.get('/health', response_model=HealthResponse)
+def health() -> HealthResponse:
+    return HealthResponse(
+        status='ok',
+        service_name=settings.service_name,
+        environment=settings.environment,
+        routing_model_version=settings.routing_model_version,
+    )
 
 
 @app.post('/tickets/route', response_model=RoutedTicket)
 def route_ticket(ticket: Ticket) -> RoutedTicket:
-    category = classify(ticket.message + ' ' + ticket.subject)
-    agent = get_agent(category)
-    escalation = should_escalate(ticket.message, ticket.priority)
-    return RoutedTicket(
-        customer_id=ticket.customer_id,
-        category=category,
-        assigned_agent=agent.name,
-        escalation_required=escalation,
-        response=agent.respond(ticket.message),
-        confidence=0.87,
-    )
+    return _service.route(ticket)
