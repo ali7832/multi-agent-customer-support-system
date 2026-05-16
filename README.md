@@ -2,6 +2,12 @@
 
 Deployable customer support routing application with specialized agents, ticket lifecycle metadata, SLA assignment, escalation decisions, audit events, FastAPI APIs, CLI workflows, Docker, CI, tests, and a premium multi-page React support operations dashboard.
 
+## Product Demo Video
+
+
+https://github.com/user-attachments/assets/dac8d9d2-19de-42dc-b6b5-e6d96cb5fc7d
+
+
 ## Core Capabilities
 
 - Multi-agent ticket routing
